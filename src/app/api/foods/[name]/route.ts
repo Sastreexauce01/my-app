@@ -2,10 +2,11 @@ import { foods } from "@/data";
 import type { NextRequest } from "next/server";
 
 export async function GET(
-  req: NextRequest,
-  context: { params: { name: string } }
+  request: NextRequest,
+  { params }: { params: { name: string } }
 ) {
-  const name = context.params.name;
+  const name = params.name;
+
   const index = foods.findIndex(
     (food) => food.name.toLowerCase().replace(/ /g, "-") === name
   );
